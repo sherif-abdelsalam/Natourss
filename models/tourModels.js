@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const slugify = require("slugify");
 // const User = require("./userModel");
 // const validator = require('validator');
+
 const tourSchema = new mongoose.Schema(
     {
         name: {
@@ -50,6 +51,7 @@ const tourSchema = new mongoose.Schema(
         priceDiscount: {
             type: Number,
             validate: {
+                // This only works on CREATE and SAVE!!!
                 validator: function (val) {
                     return val < this.price;
                 },
